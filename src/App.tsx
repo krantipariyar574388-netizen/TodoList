@@ -1,15 +1,11 @@
+import CountryCard from "./component/country-card";
 
-import FormValidation from './component/FormValidation'; 
-
-function App() {
+const App = () => {
   return (
-    <>
-      {
-
-      }
-      <FormValidation />
-    </>
+    <div className="min-h-screen bg-gray-100 flex justify-center items-start pt-10">
+      <CountryCard />
+    </div>
   );
-}
+};
 
 export default App;
