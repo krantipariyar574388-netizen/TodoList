@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 
 interface Todo {
   id: number;
@@ -35,17 +36,28 @@ useEffect(() => {
 
     setTodos([...todos, newTodo]);
     setInputValue("");
+    toast.success("Task added successfully!");
   };
 
   const deleteTodo = (id: number): void => {
     setTodos(todos.filter(todo => todo.id !== id));
+    toast.error("Task deleted!");
   };
 
   const toggleComplete = (id: number): void => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
-  };
+  setTodos(todos.map(todo => {
+    if (todo.id === id) {
+      // Logic: Yadi abako status 'completed' hune wala chha bhane toast dekhaune
+      if (!todo.completed) {
+        toast.success("Task completed!"); 
+      } else {
+        toast.info("Task marked as pending");
+      }
+      return { ...todo, completed: !todo.completed };
+    }
+    return todo;
+  }));
+};
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', fontFamily: 'Arial' }}>
