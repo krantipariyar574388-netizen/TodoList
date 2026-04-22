@@ -1,11 +1,11 @@
-import CountryCard from "./component/country-card";
+import TodoApp from "./component/TodoList"; 
 
-const App = () => {
+const ToDoApp = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-start pt-10">
-      <CountryCard />
+      <TodoApp />
     </div>
   );
 };
 
-export default App;
+export default ToDoApp;
